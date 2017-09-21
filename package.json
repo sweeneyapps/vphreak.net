@@ -1,0 +1,44 @@
+{
+  "name": "vphreak-net",
+  "version": "1.0.0",
+  "description": "my development website including reactjs and webpack",
+  "main": "main.js",
+  "scripts": {
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "test": "mocha-webpack test/**/*.js --webpack-config webpack.test.js --require jsdom-global/register --require ./testdom.js",
+    "test:mocha": "mocha --compilers js:babel-core/register --reporter min --watch --require mocha-clean",
+    "publish": "aws s3 sync dist/ s3://vphreak.net/",
+    "deploy": "npm test && npm run build && npm run publish"
+  },
+  "author": "Paul Sweeney Jr",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "chai": "^4.1.2",
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.7",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "jsdom": "^11.2.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^3.5.3",
+    "mocha-clean": "^1.0.0",
+    "mocha-webpack": "^0.7.0",
+    "style-loader": "^0.18.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2",
+    "webpack-merge": "^4.1.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
